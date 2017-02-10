@@ -52,3 +52,4 @@
 
 [高性能网络编程系列-陶辉](http://taohui.pub/category/high_conc/)
 
+[阿里-Redis内核基于时间点的备份恢复和基于AOF日志的增量同步机制设计](https://yq.aliyun.com/articles/68350?spm=5176.8067842.tagmain.111.YCeMDi)
