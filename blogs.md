@@ -1,10 +1,38 @@
 #法宝在手，说走就走
+
+##越努力，越幸运
+>虽然绝大部分同学积极进取，对自己的未来有明确规划且在打造最好的自己。没有虚度人生
+>最宝贵的大学时光。也总有少部分同学，毕业了，才光然大悟，感觉被大学活生生上了四年！
+>所以，下面分享一些所谓的鸡汤，有些很浓，还有骨头哦~@~
+
+###推荐指数99
+[怎样激励身边的朋友积极向上？](https://www.zhihu.com/question/21123063)
+
+[应届生如何找互联网工作](http://wuchong.me/blog/2014/12/21/how-to-find-internet-job/)
+
+[阿里巴巴、美团等各大互联网公司的 Java
+类校招对本科生的要求是什么？](https://www.zhihu.com/question/26350691)
+
+[非科班，java应该怎么学才能在校招中拿到好的offer？](https://www.zhihu.com/question/40477390)
+
+[未来想从事Linux后台开发，需要学习linux内核吗](https://www.zhihu.com/question/20541014)
+
+
 ##参加校园招聘倒计时30天，需要准备的工作
+
 
 >在当下各行各业颓势之际，毕业前能寻求一份工作就算对得起父母了。如果想寻求一份很好的
 >工作（知名企业、大平台、丰厚薪资、喜爱的城市），那就是1/20~1/40的概率问题了。
 >既然这个概率存在，那我们就要思考和反思为什么那个躺枪的人不是自己？！说到求职，那么
 >一份优质的offer就必不可少，至少把通往企业的第一扇门打开。
+
+[阿里+百度+CVTE面经合集（offer均已收到)](https://www.nowcoder.com/discuss/5941)
+
+[网易内推（C++/C研发）offer之路](https://www.nowcoder.com/discuss/3038)
+
+[从春招到秋招，一个本科生的求职之路](https://www.nowcoder.com/discuss/18270)
+
+[网易，新美大，携程等面试经验](https://www.nowcoder.com/discuss/20607)
 
 [应届生如何找互联网工作](http://wuchong.me/blog/2014/12/21/how-to-find-internet-job/)
 
