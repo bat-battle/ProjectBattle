@@ -3,7 +3,7 @@
 
 ##背景
 
-[加入一线企业，学习资料，面试必备](https://github.com/bat-battle/ProjectBattle/blob/master/blogs.md)
+[加入一线企业，学习资料，面试必备，猛戳我](https://github.com/bat-battle/ProjectBattle/blob/master/blogs.md)
 
 为了提高大家实际编程能力，同时拓宽大家的新技术，此项目旨在练习巩固大家已经掌握的知识，当然在此过程中，也会涉及一些新技术，希望可以借此项目，提高大家整体能力（架构设计，流程规范，沟通合作，编码实施，调试等），当然这个项目的自由度很高，自我发挥空间很大，主要看大家已有的技能和自由时间多少，而去自由组合并完成此项目。
 
