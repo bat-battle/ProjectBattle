@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CC	Makefile	/^CC = gcc$/;"	m
+INCLUDE	Makefile	/^INCLUDE = -I $(LINUX_SRC)\/include\/$/;"	m
+LINUX_SRC	Makefile	/^LINUX_SRC=\/home\/openwrt\/trunk\/build_dir\/target-mips_34kc_uClibc-0.9.33.2\/linux-ar71xx_generic\/linux-3.10.49\/$/;"	m
+MAXLINE	client.c	9;"	d	file:
+MAXLINE	service.c	9;"	d	file:
+STRIP	Makefile	/^STRIP=\/home\/openwrt\/trunk\/staging_dir\/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2\/bin\/mips-openwrt-linux-strip$/;"	m
+TARGET_CLIENT	Makefile	/^TARGET_CLIENT=client.wifi$/;"	m
+TARGET_SERVICE	Makefile	/^TARGET_SERVICE=service.wifi$/;"	m
+main	client.c	/^int main(int argc, char** argv)$/;"	f
+main	service.c	/^int main(int argc, char** argv)$/;"	f
