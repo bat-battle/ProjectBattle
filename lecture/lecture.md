@@ -106,6 +106,7 @@ interface List<E> extends Collection<E>
 interface ListIterator<E> extends Iterator<E>
 abstract class AbstractList<E> extends AbstractCollection<E> implements List<E>
 class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable : 最常用
+class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable
 class Arrays : Arrays.sort 是最常用的, 通过和 Comparator 结合对任意对象进行排序
 
 1. AbstractCollection : toArray
@@ -115,13 +116,13 @@ class Arrays : Arrays.sort 是最常用的, 通过和 Comparator 结合对任意
 5. 如何在内部类调用外部了的同名函数: CLASSNAME.this.METHOD
 6. Array.newInstance
 7. DualPivotQuicksort
+8. ArrayList 与 LinkedList 的区别
 
 ### Set
 
 public interface Set<E> extends Collection<E>
 abstract class AbstractSet<E> extends AbstractCollection<E> implements Set<E>
 class HashSet<E> extends AbstractSet<E> implements Set<E>, Cloneable, Serializable
-class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, Serializable
 class LinkedHashSet<E> extends HashSet<E> implements Set<E>, Cloneable, Serializable
 
 interface SortedSet<E> extends Set<E>
@@ -130,6 +131,9 @@ class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, S
 
 abstract class EnumSet<E extends Enum<E>> extends AbstractSet<E> implements Cloneable, Serializable
 class RegularEnumSet<E extends Enum<E>> extends EnumSet<E>
+
+1. HashSet 内部通过什么实现?
+2. 
 
 并发
 
