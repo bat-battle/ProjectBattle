@@ -10,16 +10,13 @@
 
 [应届生如何找互联网工作](http://wuchong.me/blog/2014/12/21/how-to-find-internet-job/)
 
-[阿里巴巴、美团等各大互联网公司的 Java
-类校招对本科生的要求是什么？](https://www.zhihu.com/question/26350691)
+[阿里巴巴、美团等各大互联网公司的 Java 类校招对本科生的要求是什么？](https://www.zhihu.com/question/26350691)
 
 [非科班，java应该怎么学才能在校招中拿到好的offer？](https://www.zhihu.com/question/40477390)
 
 [未来想从事Linux后台开发，需要学习linux内核吗](https://www.zhihu.com/question/20541014)
 
-
 ##参加校园招聘倒计时30天，需要准备的工作
-
 
 >在当下各行各业颓势之际，毕业前能寻求一份工作就算对得起父母了。如果想寻求一份很好的
 >工作（知名企业、大平台、丰厚薪资、喜爱的城市），那就是1/40~1/20的概率问题了。
