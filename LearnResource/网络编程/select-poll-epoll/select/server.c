@@ -50,7 +50,8 @@ int main()
 	fd_set read_set;
 	int max_fd = sock;
 
-	//array init
+	//数组初始化为 -1 ，是因为socket的一套API调用失败返回值是 -1
+    //，故我们就可以利用-1做一些判断了
 	memset(arr_fd,-1,_FD_NUM_);
 	arr_fd[0] = sock;
 	int i = 0, j = 0;
@@ -64,7 +65,7 @@ int main()
 			{
 				FD_SET(arr_fd[i],&read_set);
 			}
-			if(arr_fd[i] > max_fd)
+			if(arr_fd[i] > max_fd)//这里判断只是为了找到max_fd具体应该遍历的最大值，从而避免CPU做无用功。这里的理解很重要
 			{
 				max_fd = arr_fd[i];
 			}
