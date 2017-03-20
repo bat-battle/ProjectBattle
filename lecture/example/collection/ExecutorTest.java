@@ -14,87 +14,53 @@ import java.util.concurrent.ExecutionException;
  */
 class ExecutorTest {
 
-     ExecutorService service = Executors.newCachedThreadPool();
-     ExecutorService nft = Executors.newFixedThreadPool();
-     Vector<Future<String>> res = new Vector<Future<String>>();
-     ExecutorCompletionService ecs = new ExecutorCompletionService(nft, new ArrayBlockingQueue<String>(10));
+    ExecutorService service = Executors.newCachedThreadPool();
+    Vector<Future<Integer>> sumList = new Vector<Future<Integer>>();
 
-     class MyCallable implements Callable<String> {
-          String result;
-          MyCallable(String result) {
-              this.result = result;
-          }
-          @Override
-          public String call() {
-              return result;
-          }
-     }
+    class SumCallable implements Callable<Integer> {
+        int init;
 
-     class MyRunnable implements Runnable {
-          @Override
-          public void run() {
-              for(int i = 0; i<1000; i++) {}
-          }
-     }
+        SumCallable(int init) {
+            this.init = init;
+        }
 
-     void submitTasks1() {
-         //ExecutorCompletionService ecs = new ExecutorCompletionService(nft);
-          for (int i = 0; i < 10; i ++) {
-              ecs.submit(new MyCallable("call " + i));
-          }
-          for (int i = 0; i < 10; i ++) {
-              ecs.submit(new MyRunnable(), "run " + i);
-          }
-     }
+        @Override
+        public Integer call() {
+            int sum = 0;
+            for (int i = init; i < init + 1000; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+    }
 
-     void getTaskResult() {
-          //for (int i = 0; i < 20; i++) {
-          //    Future f = ecs.take();
-          //    System.out.println(f.get());
-          //} 
+    void submitTasks() {
+        for (int i = 100; i < 1000; i++) {
+            Future<Integer> f = service.submit(new SumCallable(i));
+            sumList.add(f);
+        }
+    }
 
-          while(true) {
-              int doneNum = 0;
-              for (int i = 0; i < 20; i++) {
-                  Future f = ecs.poll();
-                  if (f.isDone()) {
-                      System.out.println(f.get());
-                  }
-              } 
-              if (doneNum == 20) {
-                  break;
-              }
-          }
-     }
+    void dumpResults() {
+        int sum = 0;
+        for(Future<Integer> f : sumList) {
+            try {
+                sum += f.get();
+            } catch (InterruptedException e) {
+            } catch (ExecutionException e) {
+            }
+        }
 
-     void submitTasks() {
-          for (int i = 0; i < 10; i ++) {
-              Future<String> f = service.submit(new MyCallable("call " + i));
-              res.add(f);
-          }
-          for (int i = 0; i < 10; i ++) {
-              Future<String> f = service.submit(new MyRunnable(), "run " + i);
-              res.add(f);
-          }
-     }
+        System.out.println(sum);
+    }
 
-     void dumpResults() {
-          for(Future<String> f : res) {
-              try {
-                  System.out.println(f.get());
-              } catch (InterruptedException e) {
-              } catch (ExecutionException e) {
-              }
-          } 
-     }
-     
-     void test() {
-          submitTasks();
-          dumpResults();
-          service.shutdown();
-     }
+    void test() {
+        submitTasks();
+        dumpResults();
+        service.shutdown();
+    }
 
-     static public void main(String []args) {
-         new ExecutorTest().test();
-     }
+    static public void main(String []args) {
+        new ExecutorTest().test();
+    }
 }

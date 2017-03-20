@@ -13,11 +13,11 @@ class ConHashMap {
         int init;
         Map<Integer, Integer> map;
 
-	MyRunable(Map<Integer, Integer> map, int init) {
-            this.init = init;
-            this.map = map;
+	    MyRunable(Map<Integer, Integer> map, int init) {
+                this.init = init;
+                this.map = map;
         }
- 
+
         @Override
         public void run() {
             put(init);

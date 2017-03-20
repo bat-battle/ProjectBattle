@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.Reader;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
 import java.io.FileReader;
@@ -14,8 +15,46 @@ import java.io.BufferedInputStream;
 import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.util.Date;
+import java.io.RandomAccessFile;
+import java.io.ByteArrayOutputStream;
 
 class IOTest {
+
+    public void writePositionContent(RandomAccessFile file, long position, byte[] content) {
+        try {
+            // 首先将position到文件末尾的内容写入数组
+            file.seek(position);
+            ByteArrayOutputStream tmpStream = new ByteArrayOutputStream();
+            byte[] tmpArray = new byte[1024];
+            int readCount;
+            while ((readCount = file.read(tmpArray)) != -1) {
+                tmpStream.write(tmpArray, 0, readCount);
+            }
+
+            // 然后再回到position, 向其中写入内容
+            file.seek(position);
+            file.write(content);
+
+            // 最后将暂存的内容写入文件
+            file.write(tmpStream.toByteArray());
+            tmpStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void copyFile(String src, String dst) throws IOException {
+        final int BUFFER_LENGTH = 1024;
+        Reader reader = new FileReader(src);
+        Writer writer = new FileWriter(dst);
+        char[] buffer = new char[BUFFER_LENGTH];
+        int count;
+        while ((count = reader.read(buffer)) != -1) {
+            writer.write(buffer, 0, count);
+        }
+        reader.close();
+        writer.close();
+    }
 
     void testFile() throws IOException {
         File f = new File("iotest");

@@ -51,8 +51,3 @@
 5. Effective Java
 6. Head First Java
 
-
-
-
-
-

@@ -18,7 +18,7 @@ class ConCollection {
              vec.add(i);
          }
      }
-     
+
      class MyThreadList extends Thread {
          int init;
          MyThreadList(int init)  {
