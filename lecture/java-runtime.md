@@ -118,7 +118,7 @@ lshl lushr, new, invoke* 等相关指令.), 并关注 1. 栈 2. 局部变量表 
 * 类构造器(<cinit>()) 与类实例构造器不同之处在哪 ?
 * iterface 与 class 中定义的静态变量区别?
 * 类加载过程
-* 为什么需要自定义类加载器 ? 从网上下载, 动态生成等
+* 为什么需要自定义类加载器 ? 从网上下载, 动态生成, 热替换, 模块系统(多版本共存), JNI 库
 * 如何正确地自定义类加载器, 破坏双亲委派会造成什么风险?
 
 JVM 将 class 读入内存, 对 class 进行校验，转换解析和初始化, 最终形成可以被虚拟机
@@ -214,6 +214,7 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 * 接口的初始化不需要执行父接口的 <clinit>(), 类的 <clinit>() 不需要执行实现接口的 <clinit>()
 * clinit 存在多线程初始化阻塞的坑(长时间的阻塞操作会导致多个线程初始化)
 * 同一个类加载器下,一个类型只会初始化一次。
+* 如何解决多版本问题? 多个父加载器
 
 ```
 class ClassInit {
@@ -373,9 +374,9 @@ class ClassInit1 implements IClassInit1 {
 
 ### 双亲委派
 
-* 启动类加载器
-* 扩展类加载器
-* 系统类加载器 : classpath, 默认是当前路径
+* 启动类加载器 -Xbootclasspath -bootclasspath $JAVA_HOME/jre/lib/rt.jar
+* 扩展类加载器 -Djava.ext.dirs  $JAVA_HOME/jre/lib/ext/*.jar
+* 系统类加载器 : -cp -classpath, 默认是当前路径
 * 用户自定义类加载器
 
 只加载一次 : 需要注意的是在加载一个类之前首先会查找类是否已经被加载, 只有没有加载时才会调用加载器加载, 加载原理就是双亲委派
@@ -387,6 +388,21 @@ class ClassInit1 implements IClassInit1 {
 * 向下兼容
 * 线程上下文加载器
 * OSGI
+
+### 现代类加载器
+
+隔离性, 性能, 限制
+
+1. 每个 JAR 有自己的类加载器
+2. 中心化的仓库, 类加载器之间是兄弟关系
+2. 每个 JAR 申明自己导入或导出的包
+3. 仓库通包可以找到对应的类加载器
+4. 库打包成单独的模块
+
+比如 OSGi, NetBeams module system, JBoss Modules, JRebel, Javaleon, HotSwap,
+Tottletale, Project jigsaw
+
+
 
 
 类+类加载器(命名空间)唯一确立虚拟机的唯一性
@@ -482,6 +498,8 @@ $ javap -v Test
           line 5: 3
           line 6: 7
           line 7: 11
+
+    注: 0 2 3 6 不是连续的是因为 opcode 有参数
 
     public static int test1(int, int, int);
       flags: ACC_PUBLIC, ACC_STATIC
@@ -939,6 +957,12 @@ Java 是一个静态多分派(参数, 静态类型)，动态单分派(只依据�
 
 方法表一般在类加载的连接阶段进行初始化,准备了类的变量初始值后,虚拟机会把该
 类的方法表也初始化完毕。
+
+
+## 参考
+
+https://www.ibm.com/developerworks/library/it-haggar_bytecode/
+
 
 ## 附录
 
@@ -1677,3 +1701,5 @@ $ java -verbose:gc Test
 
     [GC (System.gc())  66150K->65912K(124928K), 0.0025510 secs]
     [Full GC (System.gc())  65912K->255K(124928K), 0.0079233 secs]
+
+
