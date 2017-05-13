@@ -7,7 +7,7 @@ class Intro extends Object {
         phone1.call();
         phone1.sendMsg();
         phone1.info();
-
+        
         Phone phone2 = new Phone();
         phone2.brand = "小米";
         phone2.cup = "骁龙835";

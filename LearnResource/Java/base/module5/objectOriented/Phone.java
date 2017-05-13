@@ -13,6 +13,6 @@ class Phone {
     }
 
     void info() {
-        System.out.println("当前手机信息" + "品牌:" + this.brand + "cup:" + this.cup + "屏幕尺寸:" + this.screenSize);
+        System.out.println("当前手机信息" + "品牌:" + brand + "not this cup:" + cup + "屏幕尺寸:" + screenSize);
     }
 }

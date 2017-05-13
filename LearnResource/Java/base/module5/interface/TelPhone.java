@@ -1,0 +1,5 @@
+class TelPhone {
+    void call() {
+        
+    }
+}
