@@ -1,6 +1,3 @@
-//
-// Created by fireflyc on 2016/12/26.
-//
 #include <stdlib.h>
 #include <libnet.h>
 #include <pcap.h>
