@@ -3,7 +3,9 @@
 #include<unistd.h>
 #include <sys/time.h>
 #include <string.h>
+
 #define MAX 10
+
 pthread_t thread[3];
 pthread_mutex_t mut;
 int number=0, i, j;
