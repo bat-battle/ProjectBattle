@@ -2,6 +2,7 @@
 
 1. 函数介绍
 select函数原型如下：
+
     #include <sys/select.h>
     
     int select(int nfds, fd_set *restrict readfds,
@@ -10,6 +11,7 @@ select函数原型如下：
 下面对其参数进行介绍，为了更方便描述因果关系，我们从最后一个参数开始介绍。
 1.1 第5个参数
 最后一个参数是一个timeval结构体：
+
     struct timeval
     {
         long    tv_sec;     /* seconds */
@@ -24,12 +26,12 @@ select函数原型如下：
 某个套接口的带外数据到达。
 某个已置为分组方式的伪终端存在可从其主端读取的控制状态信息。
 那么如何给一个描述字指定这几个参数值呢？select函数使用描述字集，用fd_set结构体表示。该结构体一般为一个整形数组，其中每个整数的每一位对应一个描述字。比如，假设使用32位整数，那么该数组中的第一个元素对应于描述字0~31，第二个元素对应于描述字32~63，以此类推。当然我们不用去关注这些细节，因为系统提供了四个宏用于对fd_set结构体进行操作：
+
     void FD_CLR(int fd, fd_set *fdset);     /* 清除位(bit)设置 */
     int FD_ISSET(int fd, fd_set *fdset);    /* 测试位设置 */
     void FD_SET(int fd, fd_set *fdset);     /* 设置位 */
     void FD_ZERO(fd_set *fdset);            /* 初始化描述字集 */
-    假如我们此刻有一个监听套接字fd，我们要打开该描述字读集合中的位（bit），可用如下代码实现：
-    C
+假如我们此刻有一个监听套接字fd，我们要打开该描述字读集合中的位（bit），可用如下代码实现：
     struct timeval timeout;
     timeout.tv_sec = 60;
     timeout.tv_usec = 0;
@@ -72,6 +74,7 @@ select函数原型如下：
 任何UDP套接字只要其发送低潮标记小于等于发送缓冲区大小（缺省应该总是这种关系）就总是可写的，这是因为UDP套接字不需要连接。
 3. pselect
 该函数与select很像，函数原型如下：
+
     #include <sys/select.h>
     
     int pselect(int nfds, fd_set *restrict readfds,
